@@ -12,23 +12,33 @@
     <head>
         <link href="<c:url value="/resources/bootstrap-3.3.7-dist/css/bootstrap.css" />" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Product</title>
+        <title>Login</title>
     </head>
     <body>
         <img src="<c:url value="/resources/online-shop-header.jpg"/>" style width="100%" height="200">
-        <nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand">Product</a>
+        <a class="navbar-brand">Product</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li><a href="${pageContext.request.contextPath}/register">Home</a></li>
-      <li><a href="${pageContext.request.contextPath}/register/form">Register</a></li>
-      <li><a href="${pageContext.request.contextPath}/register/productview">Product</a></li>
-      <li><a href="${pageContext.request.contextPath}/register/login">Login</a></li>
-    </ul>
   </div>
 </nav>
+    <jsp:include page="header.jsp"/>  
         <h1>Product</h1>
+        <c:forEach var="i" items="${products}">
+                
+                <div class="col-md-3">
+                    <div class="panel-primary">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <a href="/Jualan/produk/${i.id}">${i.productname}<img src="<c:url value="/resources/image/${i.imagepath}"/>" width="300" class="img-rounded"></a>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </c:forEach>
+        <img src="<c:url value="/resources/footer.png"/>" alt="Gorilla" width="100%" style="position: initial; bottom: 0">
     </body>
 </html>
