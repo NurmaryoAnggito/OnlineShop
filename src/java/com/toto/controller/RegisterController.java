@@ -26,6 +26,10 @@ public class RegisterController {
     @Autowired
     UserServices us;
     
+    @RequestMapping()
+    public String goRegistration(){
+        return "Home";
+    }
     @RequestMapping("/form")
     public String registerForm(Model model) {
         RegisterFormBean registerBean = new RegisterFormBean();
@@ -40,9 +44,9 @@ public class RegisterController {
         String encryptedPassword = PasswordDigest.createEncryptedPassword(registerBean.getPassword());
         user.setUserfullname(registerBean.getFullname());
         user.setUsername(registerBean.getUsername());
-        user.setUserpassword(registerBean.getPassword());
+        user.setUserpassword(encryptedPassword);
         user.setUseremail(registerBean.getEmail());
-        user.setUseraddress(encryptedPassword);
+        user.setUseraddress(registerBean.getAddress());
         
         
         us.saveUser(user);
@@ -50,10 +54,7 @@ public class RegisterController {
         model.addAttribute("data", registerBean);
         return "success";
     }
-    @RequestMapping()
-    public String goRegistration(){
-        return "Home";
-    }
+    
     @RequestMapping("/login")
     public String goLogin(Model model){
         LoginFormBean loginbean = new LoginFormBean();
@@ -67,16 +68,18 @@ public class RegisterController {
     
     
     @RequestMapping("/checklogin")
-    public String cekLogin(HttpSession session,@ModelAttribute("loginbeans") LoginFormBean loginbean, Model model){
+    public String cekLogin(HttpSession session,@ModelAttribute("loginbean") LoginFormBean loginbean, Model model){
         Users user = us.findbyUsername(loginbean.getUsername());
         String encryptedPassword = PasswordDigest.createEncryptedPassword(loginbean.getPassword());
-        if (user.getUsername()==null && encryptedPassword==null) {
+        if (user.getUsername()==null || !encryptedPassword.equals(user.getUserpassword())) {
             model.addAttribute("message", "username dan password salah");
             return "Login";
         }
         session.setAttribute("user", user);
-        return "Product";
+        return "Home";
     }
+    
+    
     
     
 }

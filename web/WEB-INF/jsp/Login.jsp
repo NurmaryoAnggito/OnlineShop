@@ -15,21 +15,16 @@
     </head>
     <body>
         <img src="<c:url value="/resources/online-shop-header.jpg"/>" style width="100%" height="200">
-        <nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a  class="navbar-brand">Login</a>
+      <a class="navbar-brand">Login</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li><a href="${pageContext.request.contextPath}/register">Home</a></li>
-      <li><a href="${pageContext.request.contextPath}/register/form">Register</a></li>
-      <li><a href="${pageContext.request.contextPath}/register/productview">Product</a></li>
-      <li><a href="${pageContext.request.contextPath}/register/login">Login</a></li>
-    </ul>
   </div>
 </nav>
+        <jsp:include page="header.jsp"/>  
         <h1>Login</h1>
-        <form:form action="register/checklogin" modelAttribute="registerBean" method="POST" ></form:form>
+        <form:form action="/Jualan/register/checklogin" modelAttribute="loginbean" method="POST" >
         <table>
             <tr><td><form:label path="username">Username</form:label></td>
                 <td><form:input path="username"/></td></tr>
@@ -39,5 +34,6 @@
             
         </table>
         </form:form>
+        <img src="<c:url value="/resources/footer.png"/>" alt="Gorilla" width="100%" style="position: initial; bottom: 0">
     </body>
 </html>

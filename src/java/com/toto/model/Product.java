@@ -24,6 +24,7 @@ public class Product implements Serializable {
     private int id;
     private String productname;
     private double productprice;
+    private String imagepath;
 
     public int getId() {
         return id;
@@ -84,6 +85,20 @@ public class Product implements Serializable {
      */
     public void setProductprice(double productprice) {
         this.productprice = productprice;
+    }
+
+    /**
+     * @return the imagepath
+     */
+    public String getImagepath() {
+        return imagepath;
+    }
+
+    /**
+     * @param imagepath the imagepath to set
+     */
+    public void setImagepath(String imagepath) {
+        this.imagepath = imagepath;
     }
     
 }
