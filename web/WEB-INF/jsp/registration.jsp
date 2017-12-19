@@ -14,13 +14,15 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand">Registration</a>
+        <a class="navbar-brand">Registration</a>
     </div>
   </div>
 </nav>
         <jsp:include page="header.jsp"/>
-        <form:form action="/Jualan/register/save" modelAttribute="registerBean" method="POST" >
-            <table>
+        <h1 style="text-align: center">Login</h1>
+            <div class="container panel panel-body">
+                <form:form action="/Jualan/register/save" modelAttribute="registerBean" method="POST" >
+                    <table style="margin: 0px auto" class="table-condensed">
                 <tr><td><form:label path="fullname">Full Name</form:label></td>
                     <td><form:input path="fullname"/></td></tr>
                 <tr><td><form:label path="username">Username</form:label></td>
@@ -33,8 +35,11 @@
                     <td><form:input path="address" /></td></tr>
                 
                 <tr><td></td><td><form:button name="submitButton" value="Submit">Submit</form:button></td></tr>            
-            </table>            
-        </form:form>
+            </table> 
+            </form:form>
+            </div>
+                        
+        
         <img src="<c:url value="/resources/footer.png"/>" alt="Gorilla" width="100%" style="position: initial; bottom: 0">
     </body>
 </html>
